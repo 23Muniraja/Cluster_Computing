@@ -143,5 +143,95 @@ true
 scala> println(s1.indexOf('o'))
 4
 
+->Funtions
+
 scala> println(s1 indexOf 'o')
 4
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+def sum(a:Int, b:Int):
+Int={a+b}
+
+val a = 10
+val z = 5
+val result = sum(a,z)
+
+// Exiting paste mode, now interpreting.
+
+sum: (a: Int, b: Int)Int
+a: Int = 10
+z: Int = 5
+result: Int = 15
+
+scala> def diff(a:Int, b:Int):
+     | Int = {
+     | a-b
+     | }
+diff: (a: Int, b: Int)Int
+
+
+scala> println(diff(10,5))
+5
+
+scala> def sq(x:Int)={x*x}
+sq: (x: Int)Int
+
+scala> println(sq(5))
+25
+
+scala> def sumsq(x:Int, y:Int)={sq(x)+sq(y)}
+sumsq: (x: Int, y: Int)Int
+
+scala> println(sumsq(2,4+1))
+29
+
+call by value n call by name
+
+
+scala> def fact(x:Int):Int={
+     | if(x==1)
+     | 1
+     | else
+     | x*fact(x-1)
+     | }
+fact: (x: Int)Int
+
+scala> print(fact(4))
+24
+
+
+Higher order functions
+Function that can be passed as the parameter to another 
+function and can also be returned as a result are higher order functions.
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+def applyFun(x:Int,f:Int=>Int)={ f(x) }
+val res=applyFun(5,sq)
+println(res)
+
+// Exiting paste mode, now interpreting.
+
+25
+applyFun: (x: Int, f: Int => Int)Int
+res: Int = 25
+
+
+Anonymous Funtions
+
+These fn does not require name.
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+def applyFun(x:Int,f:Int=>Int)={ f(x) }
+val res=applyFun(5,y=>y*y)
+println(res)
+
+// Exiting paste mode, now interpreting.
+
+25
+applyFun: (x: Int, f: Int => Int)Int
+res: Int = 25
