@@ -1,0 +1,447 @@
+spark-shell
+
+
+Scala
+-> print("Hello World")
+
+3 types of print
+print - prints everything in same line
+println - prints in separate line
+printf - used for formatting text
+
+-> printf("a=%d",1000)
+
+-> :paste    =>(Used to enter into paste mode where we can write multiple lines of 
+code in one go)
+ctrl + d => (to exit and run the code)
+
+
+
+scala> var a:Int = 10
+a: Int = 10
+
+scala> println(a)
+10
+
+scala> a=20
+a: Int = 20
+
+scala> print(a)
+20
+scala> val b:Int=30
+b: Int = 30
+
+scala> b=10
+<console>:23: error: reassignment to val
+       b=10
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+lazy val x=10
+
+// Exiting paste mode, now interpreting.
+
+x: Int = <lazy>
+
+scala> print(x)
+10
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+lazy val x=5
+println("Scala is fun")
+println(x)
+
+// Exiting paste mode, now interpreting.
+
+Scala is fun
+5
+x: Int = <lazy>
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val oldt:Long=12345678
+val newt:Float=oldt
+
+// Exiting paste mode, now interpreting.
+
+oldt: Long = 12345678
+newt: Float = 1.2345678E7
+
+scala>
+//But float to long is not possible
+
+
+scala> val s:String="Hello"
+s: String = Hello
+
+scala> val hex:Int=0x2F5
+hex: Int = 757
+
+scala> val f:Float=12.34F
+f: Float = 12.34
+
+scala> val i:Double=12.34e3
+i: Double = 12340.0
+
+scala> val a:Char='A'
+a: Char = A
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=5
+var b=10
+println(a+b)
+println(a-b)
+println(a*b)
+println(a/b)
+println(a%b)
+
+// Exiting paste mode, now interpreting.
+
+15
+-5
+50
+0
+5
+a: Int = 5
+b: Int = 10
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=10
+var b=8
+println(a>b)
+println(a<b)
+println(a>=b)
+println(a<=b)
+println(a!=b)
+
+// Exiting paste mode, now interpreting.
+
+true
+false
+true
+false
+true
+a: Int = 10
+b: Int = 8
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=true
+var b=false
+print(a && b)
+println(a || b)
+
+// Exiting paste mode, now interpreting.
+
+falsetrue
+a: Boolean = true
+b: Boolean = false
+
+scala>
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=1
+var b=0
+println(a&b)
+println(a|b)
+println(~b)
+println(a^b)
+
+// Exiting paste mode, now interpreting.
+
+0
+1
+-1
+1
+a: Int = 1
+b: Int = 0
+
+
+double<-float<-long<-short<-int<-
+
+
+val numconverted:Int=num.toInt
+println(x.getClass)
+
+
+scala> val seqCol=Seq(1,2,3,4,5)
+seqCol: Seq[Int] = List(1, 2, 3, 4, 5)
+
+scala> val res=seqCol.apply(2)
+res: Int = 3
+
+scala> println(res)
+3
+
+scala> val setCol=Set(1,2,3,4,5,6)
+setCol: scala.collection.immutable.Set[Int] = Set(5, 1, 6, 2, 3, 4)
+
+scala> val res=setCol.apply(2)
+res: Boolean = true
+
+scala> val res1=setCol.apply(9)
+res1: Boolean = false
+
+scala> val mapCol=Map(('a',1),('b',2))
+mapCol: scala.collection.immutable.Map[Char,Int] = Map(a -> 1, b -> 2)
+
+scala> val res=mapCol.apply('a')
+res: Int = 1
+
+
+
+Note-List Collection operation:
+head: returen the first element
+tail: returns all the elelment except the first.
+Prepenfing(:: or +:)-Adds an element to the beginning of a list
+Appending(:+)-Adds an element to the last of a list
+::: - concating two lists.
+
+
+scala> val numbers=List(1,2,3,4)
+numbers: List[Int] = List(1, 2, 3, 4)
+
+scala> println(numbers)
+List(1, 2, 3, 4)
+
+scala> numbers.foreach(println)
+1
+2
+3
+4
+
+scala> println(numbers.head)
+1
+
+scala> println(numbers.tail)
+List(2, 3, 4)
+
+scala> val l1=10 :: numbers
+l1: List[Int] = List(10, 1, 2, 3, 4)
+
+scala> val l2=numbers :+ 20
+l2: List[Int] = List(1, 2, 3, 4, 20)
+
+scala> val l3=l1:::l2
+l3: List[Int] = List(10, 1, 2, 3, 4, 1, 2, 3, 4, 20)
+
+scala> println(numbers.length)
+4
+
+scala> println(numbers.reverse)
+List(4, 3, 2, 1)
+
+scala> println(numbers.contains(3))
+true
+
+scala> println(numbers.contains(30))
+false
+
+Note-Set Collection
+1. Order is not mainted and it is immutable.
+
++: ->append an element to set
+-: ->remove an element from set
+++ or | or union
+& or intersect -> 
+-- or diff -> difference
+contains()
+
+scala> val set1=Set(1,2,3,4,5,6)
+set1: scala.collection.immutable.Set[Int] = Set(5, 1, 6, 2, 3, 4)
+
+scala> val set2 = set1+10
+set2: scala.collection.immutable.Set[Int] = Set(5, 10, 1, 6, 2, 3, 4)
+
+scala> val set3 = set1-1
+set3: scala.collection.immutable.Set[Int] = Set(5, 6, 2, 3, 4)
+
+scala> val set4 = set2++set3
+set4: scala.collection.immutable.Set[Int] = Set(5, 10, 1, 6, 2, 3, 4)
+
+scala> val set5 = set2&set3
+set5: scala.collection.immutable.Set[Int] = Set(5, 6, 2, 3, 4)
+
+scala> val set6 = set2--set3
+set6: scala.collection.immutable.Set[Int] = Set(10, 1)
+
+
+Note-Map Collection
+1 it is immutable and unique
++: add a key-value pair
+-: removes a key
+Adding & Updating Elements
+
+scala> val map1=Map(('a',10),('b',20))
+map1: scala.collection.immutable.Map[Char,Int] = Map(a -> 10, b -> 20)
+
+scala> val map2=map1+('c'->30)
+map2: scala.collection.immutable.Map[Char,Int] = Map(a -> 10, b -> 20, c -> 30)
+
+scala> val map3=map1-('b')
+map3: scala.collection.immutable.Map[Char,Int] = Map(a -> 10)
+
+scala> val map4 = map1 + ('a'->1)
+map4: scala.collection.immutable.Map[Char,Int] = Map(a -> 1, b -> 20)
+
+
+Note - Vector Collection
+1. it is an immutable seq optimized for random access
+
+head - returns first element
+tail - returns all elements except first.
+Appending(:+)
+Prepending(+:)
+updated(index, new_value)
+filter(_!=value) removes elements matching the value
+
+scala> val vec1=Vector(1,2,3,4,5,6)
+vec1: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4, 5, 6)
+
+scala> println(vec1.head)
+1
+
+scala> println(vec1.tail)
+Vector(2, 3, 4, 5, 6)
+
+scala> var vec2=Vector(1,2,3,4,5,6)
+vec2: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4, 5, 6)
+
+scala> println(vec2.tail)
+Vector(2, 3, 4, 5, 6)
+
+scala> val v1 = vec1:+10
+v1: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4, 5, 6, 10)
+
+scala> val v2 = 11+:vec1
+v2: scala.collection.immutable.Vector[Int] = Vector(11, 1, 2, 3, 4, 5, 6)
+
+scala> val v3=vec1.updated(0,100)
+v3: scala.collection.immutable.Vector[Int] = Vector(100, 2, 3, 4, 5, 6)
+
+scala> val v4=vec1.filter(_!=1)
+v4: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5, 6)
+
+
+
+Stream Collection - also known as lazy list 
+scala> val s=Stream(1,2,3,4)
+s: scala.collection.immutable.Stream[Int] = Stream(1, ?)
+
+
+Mutable Collection : Array
+
+scala> val arr=Array(1,2,3,4,5)
+arr: Array[Int] = Array(1, 2, 3, 4, 5)
+
+scala> arr.foreach(println)
+1
+2
+3
+4
+5
+scala> val res=arr.filter(_%2==0)
+res: Array[Int] = Array(2, 4)
+
+scala> val res1=res.map(_*3)
+res1: Array[Int] = Array(6, 12)
+
+scala> val rev=res1.reverse
+rev: Array[Int] = Array(12, 6)
+
+scala> rev.foreach(println)
+12
+6
+
+scala> val array1=new Array[String](4)
+array1: Array[String] = Array(null, null, null, null)
+
+scala> array1(0)="Hello"
+
+scala> array1(1)="Scala"
+
+scala> array1(2)="Shell"
+
+scala> array1(3)="Python"
+
+scala> array1.foreach(println)
+Hello
+Scala
+Shell
+Python
+
+scala> val arr2=Array.range(0,10)
+arr2: Array[Int] = Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+scala> val arr3=Array.fill(4)("scala")
+arr3: Array[String] = Array(scala, scala, scala, scala)
+
+scala> val arr4 = "Scala".toArray
+arr4: Array[Char] = Array(S, c, a, l, a)
+
+scala> val arr4 = "Scala is fun".toArray
+arr4: Array[Char] = Array(S, c, a, l, a,  , i, s,  , f, u, n)
+
+Array-Buffer
+
+scala> val arrBuffer=new ArrayBuffer[String](2)
+<console>:22: error: not found: type ArrayBuffer
+       val arrBuffer=new ArrayBuffer[String](2)
+                         ^
+
+scala> import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.ArrayBuffers
+
+scala> val arrBuffer=ArrayBuffer(1,2,3,4)
+arrBuffer: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4)
+
+scala> val arrBuffer1=new ArrayBuffer[Int]()
+arrBuffer1: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer()
+
+scala> arrBuffer1 += 1
+res8: arrBuffer1.type = ArrayBuffer(1)
+
+scala> arrBuffer1 += 2
+res9: arrBuffer1.type = ArrayBuffer(1, 2)
+
+scala> arrBuffer1 += 4
+res10: arrBuffer1.type = ArrayBuffer(1, 2, 4)
+
+scala> arrBuffer1 += 8
+res11: arrBuffer1.type = ArrayBuffer(1, 2, 4, 8)
+
+scala> arrBuffer1.foreach(println)
+1
+2
+4
+8
+
+scala> arrBuffer1 -= 1
+res13: arrBuffer1.type = ArrayBuffer(2, 4, 8)
+
+scala> arrBuffer1.foreach(println)
+2
+4
+8
+
+scala> arrBuffer1.remove(2)
+res15: Int = 8
+
+scala> arrBuffer1.foreach(println)
+2
+4
+
+scala> arrBuffer1.clear
+
+scala> arrBuffer1.foreach(println)

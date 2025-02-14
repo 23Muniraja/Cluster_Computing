@@ -1,0 +1,147 @@
+1. String Length
+scala> var str="Hello"
+str: String = Hello
+
+scala> println(str.length)
+5
+
+2. Concatenation 
+scala> str2 = "Scala"
+str2: String = Scala
+
+scala> var str3 = str + str2
+str3: String = HelloScala
+
+scala> println("Hello" + "World")
+HelloWorld
+
+3. String InterColation
+scala> var a3="K21BH"
+a3: String = K21BH
+
+scala> println(s"Hello section $a3")
+Hello section K21BH
+
+scala> val a4=1.23456F
+a4: Float = 1.23456
+
+scala> println(f"The value of a4 is $a4%.2f")
+The value of a4 is 1.23
+
+4. String Equality
+scala> val a5="Hello"
+a5: String = Hello
+
+scala> val a6="hello"
+a6: String = hello
+
+scala> println(a5==a6)
+false
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+5. Multi line string
+val multilinestring = """This is a
+multiline string
+consisting of
+multiple line"""
+println(multilinestring)
+
+// Exiting paste mode, now interpreting.
+
+This is a
+multiline string
+consisting of
+multiple line
+multilinestring: String =
+This is a
+multiline string
+consisting of
+multiple line
+
+
+6. String splitting
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val splitpizza = "Pizza Dough, Tomato Sauce, Cheese, Toppings of choice".split(",")
+splitpizza.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+Pizza Dough
+ Tomato Sauce
+ Cheese
+ Toppings of choice
+splitpizza: Array[String] = Array(Pizza Dough, " Tomato Sauce", " Cheese", " Toppings of choice")
+
+7. Regular Expression 
+
+scala> val exptofind = "the".r
+exptofind: scala.util.matching.Regex = the
+
+scala> val stringtofindexp = "the big data channel"
+stringtofindexp: String = the big data channel
+
+scala> val match1 = exptofind.findFirstIn(stringtofindexp)
+match1: Option[String] = Some(the)
+
+scala> match1.foreach(println)
+the
+
+		+ => 1 or more occurence [1->5] number must me btw 1 to 5 {2} => must be 2 digits
+scala> val e1 =  "[1-5]{2}+".r
+e1: scala.util.matching.Regex = [1-5]{2}+
+
+scala> val s1 = "12 67 93 48 51"
+s1: String = 12 67 93 48 51
+
+scala> val match2 = e1.findAllIn(s1)
+match2: scala.util.matching.Regex.MatchIterator = <iterator>
+
+scala> match2.foreach(println)
+12
+51
+
+scala> val s2 = "8201530"
+s2: String = 8201530
+
+scala> val replace1 = s2.replaceFirst("[01]","X")
+replace1: String = 82X1530
+
+scala> val s3 = "8032451"
+s3: String = 8032451
+
+scala> val replace1 = s3.replaceFirst("[01]","X")
+replace1: String = 8X32451
+
+scala> val replace1 = s2.replaceAll("[01]","X")
+replace1: String = 82XX53X
+
+scala> val s1="Hello"
+s1: String = Hello
+
+scala> val s2="Hello"
+s2: String = Hello
+
+scala> println(s1.equals(s2))
+true
+
+scala> val s3="hello"
+s3: String = hello
+
+scala> println(s2.equalsIgnoreCase(s3))
+true
+
+scala> s1 equals s2
+res3: Boolean = true
+
+scala> println(s1 equals s2)
+true
+
+scala> println(s1.indexOf('o'))
+4
+
+scala> println(s1 indexOf 'o')
+4
